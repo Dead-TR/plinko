@@ -1,23 +1,27 @@
 import { Application, Assets, Sprite, Texture } from "pixi.js";
 
-import { Plinko } from ".";
 import { canvasSize, changeResolution, startDotsAmount } from "./config";
 import { assets } from "./assets";
-import { AssetsNames, PlinkoState } from "./type";
-import { repeat } from "./utils";
-import { Dot } from "./entities";
-import { getDotSize } from "./utils/getDotSize";
+import { repeat, getDotSize } from "./utils";
+import { Ball, Dot } from "./entities";
 
-export class GameEngine {
+import { AssetsNames, PlinkoState } from "./type";
+import { Plinko } from ".";
+import { Engine } from "./Engine";
+
+export class Game {
   constructor(main: Plinko) {
     this.main = main;
   }
   private main: Plinko;
   private canvas: HTMLCanvasElement | null = null;
-  private app: Application | null = null;
-  private assets: Record<AssetsNames, Texture> | null = null;
 
+  private app: Application | null = null;
+  private engine = new Engine(this);
+
+  private assets: Record<AssetsNames, Texture> | null = null;
   private dots: Dot[][] = [];
+  private balls: Ball[] = [];
 
   state: PlinkoState = {
     rows: 6,
@@ -36,12 +40,17 @@ export class GameEngine {
         width: canvasSize,
         height: canvasSize,
         resolution: changeResolution ? resolution : 1,
-        background: "#aaaa50",
+        background: "#44c3c3",
         // backgroundAlpha: 0,
       });
 
       await this.loadAssets();
       this.render();
+
+      this.app.ticker.add(this.update);
+      this.app.ticker.start();
+
+      this.createBall(420, 25);
     } else {
       console.error("The canvas is missing");
     }
@@ -77,10 +86,6 @@ export class GameEngine {
     const halfDistance = distanceBetweenDots / 2;
     const horizontalCenter = canvasSize / 2;
 
-    new Dot(this.assets?.ball, horizontalCenter, 20).addToContainer(
-      this.app!.stage,
-    );
-
     const dotSize = getDotSize(this.state.rows);
 
     this.dots = repeat(this.state.rows, (r) => {
@@ -94,11 +99,24 @@ export class GameEngine {
         const x = left + distanceBetweenDots * i;
 
         const dot = new Dot(this.assets?.dot, x, y, dotSize);
-        dot.addToContainer(this.app!.stage);
+        dot.register(this.app!.stage, this.engine);
 
         return dot;
       });
     });
+  };
+
+  createBall = (x: number, y: number) => {
+    const dotSize = getDotSize(this.state.rows);
+
+    const ball = new Ball(x, y, this.assets?.ball, dotSize);
+    ball.register(this.app!.stage, this.engine);
+    this.balls.push(ball);
+  };
+
+  update = () => {
+    debugger;
+    this.balls.forEach((b) => b.update());
   };
 
   destroy = () => {

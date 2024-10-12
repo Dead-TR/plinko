@@ -1,9 +1,11 @@
-import { Container, Graphics, Sprite, Texture } from "pixi.js";
-import { debug, minDotSize } from "../config";
-import { Engine } from "../Engine";
+import { Container, Sprite, Texture } from "pixi.js";
 
-export class Dot {
-  constructor(texture?: Texture, x?: number, y?: number, dotSize = minDotSize) {
+import { minDotSize } from "../config";
+import { Engine } from "../Engine";
+import { Body } from "matter-js";
+
+export class Ball {
+  constructor(x: number, y: number, texture?: Texture, dotSize = minDotSize) {
     this.sprite = new Sprite(texture);
     this.sprite.anchor.set(0.5);
     this.sprite.scale.set(dotSize / this.sprite.width);
@@ -11,8 +13,9 @@ export class Dot {
     this.sprite.position.set(x, y);
     this.dotSize = dotSize;
   }
+
   private sprite: Sprite;
-  private body: Matter.Body | null = null;
+  private body: Body | null = null;
 
   private dotSize: number;
 
@@ -24,7 +27,18 @@ export class Dot {
       y,
       this.dotSize,
       this.dotSize,
-      true,
+      false,
     );
+
+    // this.body
+  };
+
+  update = () => {
+    if (this.body) {
+      const { angle, position } = this.body;
+      const { x, y } = position;
+      this.sprite.position.set(x, y);
+      this.sprite.angle = angle * (180 / Math.PI);
+    }
   };
 }
