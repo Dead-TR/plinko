@@ -6,4 +6,6 @@ export class Plinko {
   }
 
   engine = new GameEngine(this);
+
+  destroy = this.engine.destroy
 }
