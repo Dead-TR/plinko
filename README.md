@@ -24,7 +24,7 @@ Before starting, make sure you have the following installed:
 
 2. **Open the project folder**
    Open a terminal and navigate to the folder where the project files are located. You can do this by typing:
-   `cd plinko`
+   `cd ./plinko`
 
 3. **Install dependencies**
    The project uses several external libraries (listed in the `package.json` file). To install them, run the following command in the terminal:
@@ -38,7 +38,7 @@ Before starting, make sure you have the following installed:
 
 ## Troubleshooting
 
-- If the `npm install` command fails, ensure you have a stable internet connection and the _correct_ version of Node.js installed.
+- If the `npm install` command fails, ensure you have a stable internet connection and the **_correct_** version of Node.js installed.
 - If the project doesn't open in your browser, try opening it manually by typing `http://localhost:3000` in your browser's address bar.
 
 # Plinko
@@ -103,5 +103,5 @@ The app uses the Matter JS physics engine, making it highly flexible and customi
 
 # Technologies
   - TypeScript
-  - [Pixi.JS](https://pixijs.com/)
+  - [PixiJS](https://pixijs.com/)
   - [Matter.js](https://brm.io/matter-js/)
