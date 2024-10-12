@@ -1,9 +1,9 @@
 import BallUrl from "./assets/ball.png";
 import BasketUrl from "./assets/basket.png";
-import DotUrl from "./assets/dot.png";
+import PegUrl from "./assets/peg.png";
 
 export const assets = {
   ball: BallUrl,
   basket: BasketUrl,
-  dot: DotUrl,
+  peg: PegUrl,
 };

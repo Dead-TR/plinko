@@ -9,5 +9,5 @@ export class Plinko {
   engine = new Game(this);
 
   destroy = this.engine.destroy;
-  play = () => this.engine.createBall(between(350, 550), between(10, 50));
+  play = () => this.engine.createBall(between(430, 530), -50);
 }

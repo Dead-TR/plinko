@@ -1,8 +1,8 @@
 export const canvasSize = 960;
 export const changeResolution = false;
 
-export const minRows = 6;
-export const maxRows = 16;
+export const minRows = 8;
+export const maxRows = 14;
 
 export const minDotSize = 16;
 export const maxDotSize = 28;

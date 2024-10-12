@@ -30,7 +30,7 @@ export class Game {
   private baskets: Basket[] = [];
 
   state: PlinkoState = {
-    rows: 6,
+    rows: 8,
   };
 
   create = async (canvas: HTMLCanvasElement | null) => {
@@ -106,7 +106,7 @@ export class Game {
           horizontalCenter - distanceBetweenDots * (columns / 2) + halfDistance;
         const x = left + distanceBetweenDots * i;
 
-        const dot = new Peg(this.assets?.dot, x, y, dotSize);
+        const dot = new Peg(this.assets?.peg, x, y, dotSize);
         dot.register(this.app!.stage, this.engine);
 
         return dot;
@@ -114,7 +114,7 @@ export class Game {
     });
 
     this.baskets = repeat(basketAmount, (i) => {
-      const x = padding + distanceBetweenDots * i + dotSize * 1.25;
+      const x = padding + distanceBetweenDots * i + dotSize ;
       const width = distanceBetweenDots - dotSize * 2;
 
       const basket = new Basket(
