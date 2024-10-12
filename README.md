@@ -1,3 +1,5 @@
+# [Demo](https://dead-tr.github.io/plinko/)
+
 # How to Run the Project
 
 ## Prerequisites
@@ -100,8 +102,8 @@ The app uses the Matter JS physics engine, making it highly flexible and customi
 
 - **categories** – Defines values used in the `collisionFilter` to set collision behavior between different game objects.
 
-
 # Technologies
-  - TypeScript
-  - [PixiJS](https://pixijs.com/)
-  - [Matter.js](https://brm.io/matter-js/)
+
+- TypeScript
+- [PixiJS](https://pixijs.com/)
+- [Matter.js](https://brm.io/matter-js/)
