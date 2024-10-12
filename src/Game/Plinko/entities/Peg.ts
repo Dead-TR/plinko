@@ -1,8 +1,10 @@
-import { Container, Graphics, Sprite, Texture } from "pixi.js";
-import { debug, minDotSize } from "../config";
-import { Engine } from "../Engine";
+import { Container, Sprite, Texture } from "pixi.js";
 
-export class Dot {
+import { minDotSize } from "../config";
+import { Engine } from "../Engine";
+import { PegBody } from "../type";
+
+export class Peg {
   constructor(texture?: Texture, x?: number, y?: number, dotSize = minDotSize) {
     this.sprite = new Sprite(texture);
     this.sprite.anchor.set(0.5);
@@ -12,19 +14,19 @@ export class Dot {
     this.dotSize = dotSize;
   }
   private sprite: Sprite;
-  private body: Matter.Body | null = null;
+  private body: PegBody | null = null;
 
   private dotSize: number;
 
   register = (container: Container, engine: Engine) => {
     container.addChild(this.sprite);
     const { x, y } = this.sprite;
-    this.body = engine.createRectangleBody(
+    this.body = engine.createCircleBody(
       x,
       y,
-      this.dotSize,
-      this.dotSize,
+      this.dotSize / 2,
       true,
-    );
+    ) as PegBody;
+    this.body.peg = this;
   };
 }

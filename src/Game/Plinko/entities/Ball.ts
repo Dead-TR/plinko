@@ -1,8 +1,8 @@
 import { Container, Sprite, Texture } from "pixi.js";
 
-import { minDotSize } from "../config";
+import { createMode, minDotSize } from "../config";
 import { Engine } from "../Engine";
-import { Body } from "matter-js";
+import { BallBody, BallCreateModeData, PlinkoBody } from "../type";
 
 export class Ball {
   constructor(x: number, y: number, texture?: Texture, dotSize = minDotSize) {
@@ -12,25 +12,29 @@ export class Ball {
 
     this.sprite.position.set(x, y);
     this.dotSize = dotSize;
-  }
 
+    if (createMode) this.createModeData = { x, y, kicks: 0 };
+  }
   private sprite: Sprite;
-  private body: Body | null = null;
+  private body: BallBody | null = null;
+  private engine: Engine | null = null;
 
   private dotSize: number;
+  createModeData: BallCreateModeData | null = null;
 
   register = (container: Container, engine: Engine) => {
     container.addChild(this.sprite);
+    this.engine = engine;
+
     const { x, y } = this.sprite;
-    this.body = engine.createRectangleBody(
+    this.body = engine.createCircleBody(
       x,
       y,
-      this.dotSize,
-      this.dotSize,
+      this.dotSize / 2,
       false,
-    );
+    ) as BallBody;
 
-    // this.body
+    this.body.ball = this;
   };
 
   update = () => {
@@ -39,6 +43,15 @@ export class Ball {
       const { x, y } = position;
       this.sprite.position.set(x, y);
       this.sprite.angle = angle * (180 / Math.PI);
+    }
+  };
+
+  destroy = () => {
+    this.sprite.destroy();
+
+    if (this.body && this.engine) {
+      this.engine.removeBody(this.body as PlinkoBody);
+      this.body = null;
     }
   };
 }

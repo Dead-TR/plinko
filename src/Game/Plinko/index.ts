@@ -1,4 +1,5 @@
 import { Game } from "./Game";
+import { between } from "./utils";
 
 export class Plinko {
   constructor(canvas: HTMLCanvasElement | null) {
@@ -7,5 +8,6 @@ export class Plinko {
 
   engine = new Game(this);
 
-  destroy = this.engine.destroy
+  destroy = this.engine.destroy;
+  play = () => this.engine.createBall(between(350, 550), between(10, 50));
 }

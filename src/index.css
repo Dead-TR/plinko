@@ -18,12 +18,14 @@ code {
   height: 100vh;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .wrapper {
   max-width: 600px;
   width: 100%;
+
+  margin: 0 auto;
 }
 .canvas {
   width: 100%;
