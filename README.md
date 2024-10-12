@@ -99,3 +99,9 @@ The app uses the Matter JS physics engine, making it highly flexible and customi
   - **friction** – The friction value for the baskets is set to `1`, indicating high resistance. This means the ball is more likely to slow down or stop once it lands in the basket, preventing it from bouncing out easily.
 
 - **categories** – Defines values used in the `collisionFilter` to set collision behavior between different game objects.
+
+
+# Technologies
+  - TypeScript
+  - [Pixi.JS](https://pixijs.com/)
+  - [Matter.js](https://brm.io/matter-js/)
