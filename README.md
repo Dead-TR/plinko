@@ -1,5 +1,3 @@
-figma https://www.figma.com/design/Ht0sekBpIwi92Z1dNpTXYg/P2E-game-platform-(Community)?node-id=1-13909&node-type=frame&t=F6DGmevFtluUEUEq-0
-
 # [Demo](https://dead-tr.github.io/plinko/)
 
 # How to Run the Project
