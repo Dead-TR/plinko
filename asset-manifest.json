@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/plinko/static/css/main.59010832.css",
-    "main.js": "/plinko/static/js/main.59cc07e8.js",
+    "main.css": "/plinko/static/css/main.2acc5739.css",
+    "main.js": "/plinko/static/js/main.74e59269.js",
     "static/js/372.cdf34f56.chunk.js": "/plinko/static/js/372.cdf34f56.chunk.js",
     "static/js/929.6926f81d.chunk.js": "/plinko/static/js/929.6926f81d.chunk.js",
     "static/js/258.0afffe5d.chunk.js": "/plinko/static/js/258.0afffe5d.chunk.js",
@@ -9,8 +9,8 @@
     "static/js/10.1408597d.chunk.js": "/plinko/static/js/10.1408597d.chunk.js",
     "static/js/763.6c66d90c.chunk.js": "/plinko/static/js/763.6c66d90c.chunk.js",
     "index.html": "/plinko/index.html",
-    "main.59010832.css.map": "/plinko/static/css/main.59010832.css.map",
-    "main.59cc07e8.js.map": "/plinko/static/js/main.59cc07e8.js.map",
+    "main.2acc5739.css.map": "/plinko/static/css/main.2acc5739.css.map",
+    "main.74e59269.js.map": "/plinko/static/js/main.74e59269.js.map",
     "372.cdf34f56.chunk.js.map": "/plinko/static/js/372.cdf34f56.chunk.js.map",
     "258.0afffe5d.chunk.js.map": "/plinko/static/js/258.0afffe5d.chunk.js.map",
     "627.99679d0c.chunk.js.map": "/plinko/static/js/627.99679d0c.chunk.js.map",
@@ -18,7 +18,7 @@
     "763.6c66d90c.chunk.js.map": "/plinko/static/js/763.6c66d90c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.59010832.css",
-    "static/js/main.59cc07e8.js"
+    "static/css/main.2acc5739.css",
+    "static/js/main.74e59269.js"
   ]
 }
