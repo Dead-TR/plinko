@@ -44,7 +44,7 @@ export class Game {
     if (canvas) {
       this.app = new Application();
 
-      this.app.init({
+      await this.app.init({
         canvas,
         width: canvasSize,
         height: canvasSize,
