@@ -2,8 +2,8 @@ import { Game } from "./Game";
 import { between } from "./utils";
 
 export class Plinko {
-  constructor(canvas: HTMLCanvasElement | null) {
-    this.engine.create(canvas);
+  constructor(wrapper: HTMLElement | null) {
+    this.engine.create(wrapper);
   }
 
   engine = new Game(this);

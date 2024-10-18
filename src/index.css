@@ -27,6 +27,7 @@ code {
 
   margin: 0 auto;
 }
-.canvas {
+
+.wrapper canvas {
   width: 100%;
 }

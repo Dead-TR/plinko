@@ -5,22 +5,23 @@ import { Plinko } from "./Game";
 
 const App = () => {
   const plinko = useRef<Plinko | null>();
-  const canvas = useRef<HTMLCanvasElement | null>(null);
+  const wrapper = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const app = new Plinko(canvas.current);
+    if (plinko.current) plinko.current.destroy();
+
+    const app = new Plinko(wrapper.current);
     plinko.current = app;
 
     return () => {
       app.destroy();
+      plinko.current = null;
     };
   }, []);
 
   return (
     <div className="App">
-      <div className="wrapper">
-        <canvas ref={canvas} className="canvas" />
-      </div>
+      <div className="wrapper" ref={wrapper}></div>
 
       <div className="topPall"></div>
       <div className="bottomPanel">

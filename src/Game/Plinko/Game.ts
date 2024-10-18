@@ -19,6 +19,7 @@ export class Game {
     this.main = main;
   }
   private main: Plinko;
+  private wrapper: HTMLElement | null = null;
   private canvas: HTMLCanvasElement | null = null;
 
   private app: Application | null = null;
@@ -33,10 +34,12 @@ export class Game {
     rows: 8,
   };
 
-  create = async (canvas: HTMLCanvasElement | null) => {
+  create = async (wrapper: HTMLElement | null) => {
+    const canvas = document.createElement("canvas");
+    wrapper?.appendChild(canvas);
     this.canvas = canvas;
-    const parentWrapper = canvas?.parentElement;
-    const resolution = (parentWrapper?.offsetWidth || 0) / canvasSize || 1;
+    this.wrapper = wrapper;
+    const resolution = (this.wrapper?.offsetWidth || 0) / canvasSize || 1;
 
     if (canvas) {
       this.app = new Application();
@@ -114,7 +117,7 @@ export class Game {
     });
 
     this.baskets = repeat(basketAmount, (i) => {
-      const x = padding + distanceBetweenDots * i + dotSize ;
+      const x = padding + distanceBetweenDots * i + dotSize;
       const width = distanceBetweenDots - dotSize * 2;
 
       const basket = new Basket(
@@ -147,6 +150,7 @@ export class Game {
 
   destroy = () => {
     this.app?.destroy();
+    this.canvas?.remove();
   };
 
   createConfig = () => {
